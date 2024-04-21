@@ -1,36 +1,15 @@
 <script lang="ts" setup>
-import { onMounted, ref, watch } from "vue";
+import { ref, watch } from "vue";
 import { useAssetStore } from "../store/asset";
 let pageForm = ref({
   pageNumber: 1,
-  pageSize: 7,
-  ip: "",
+  pageSize: 20,
+  ip: "www.baidu.com",
 });
 let isactive = ref(true);
 
 const assetStore = useAssetStore();
-// const AssetMappingList = [
-//   {
-//     id: 1,
-//     ip: 200,
-//     transport: 300,
-//     country: 400,
-//     area: 500,
-//     city: 600,
-//     port: 700,
-//     time: 800,
-//   },
-//   {
-//     id: 1,
-//     ip: 200,
-//     transport: 300,
-//     country: 400,
-//     area: 500,
-//     city: 600,
-//     port: 700,
-//     time: 800,
-//   },
-// ];
+
 let AssetMappingList = ref({});
 // 获取资产测绘
 const searchAssetMappingList = async () => {
@@ -70,42 +49,33 @@ watch(
     <!--S 结果页面 -->
     <div id="result" v-show="!isactive">
       <h2>资产查询</h2>
-      <!-- <div class="DetailedSearch">
-      <el-input placeholder="请输入要搜索的资产"></el-input
-      ><el-button class="el-button--add">搜索</el-button>
-    </div> -->
+
       <hr />
-      <!-- <el-descriptions
+      <el-descriptions
         direction="vertical"
         :column="8"
         v-for="item in AssetMappingList.list"
         v-show="!isactive"
         border
       >
-        <el-descriptions-item width="10%" label="id">{{
-          item.id
-        }}</el-descriptions-item>
-        <el-descriptions-item width="10%" label="ip">{{
-          item.ip
-        }}</el-descriptions-item>
-        <el-descriptions-item width="10%" label="transport">{{
-          item.transport
-        }}</el-descriptions-item>
         <el-descriptions-item width="10%" label="Country">{{
           item.country
         }}</el-descriptions-item>
-        <el-descriptions-item width="10%" label="area">
-          {{ item.area }}
+        <el-descriptions-item width="10%" label="province">
+          {{ item.province }}
         </el-descriptions-item>
         <el-descriptions-item width="10%" label="city">
           {{ item.city }}
         </el-descriptions-item>
+        <el-descriptions-item width="10%" label="ip">
+          {{ item.ip }}
+        </el-descriptions-item>
         <el-descriptions-item width="10%" label="port">
           {{ item.port }}
         </el-descriptions-item>
-        <el-descriptions-item width="10%" label="time">
-          {{ item.time }}
-        </el-descriptions-item>
+        <el-descriptions-item width="10%" label="updated_at">{{
+          item.updated_at
+        }}</el-descriptions-item>
       </el-descriptions>
       <el-pagination
         small
@@ -113,7 +83,7 @@ watch(
         :total="AssetMappingList.total"
         v-model:current-page="pageForm.pageNumber"
         :page-count="AssetMappingList.pages"
-      /> -->
+      />
       <!--E 结果页面 -->
     </div>
   </div>
