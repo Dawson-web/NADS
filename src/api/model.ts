@@ -34,6 +34,7 @@ export interface pageList {
   organization?: string;
   publisher?: string;
   reportName?: string;
+  ip?: string;
 }
 
 export interface newUserForm {

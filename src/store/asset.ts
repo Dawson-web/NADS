@@ -26,6 +26,12 @@ export const useAssetStore = defineStore("asset", () => {
   const getAssetMappingInfo = async (form: pageList) => {
     try {
       const res = await getAssetMappingInfoAPI(form);
+      setTimeout(() => {
+        ElMessage({
+          type: "success",
+          message: res.data.msg,
+        });
+      }, 500);
       return res.data.data;
     } catch (error) {
       console.log(error);

@@ -269,7 +269,7 @@ export const getAssetMappingAPI = (form: AssetMappingForm) => {
 export const getAssetMappingInfoAPI = (form: pageList) => {
   return request({
     method: "GET",
-    url: `/property/mapping?pageNumber=${form.pageNumber}&pageSize=${form.pageSize}`,
+    url: `/property/mapping?pageNumber=${form.pageNumber}&pageSize=${form.pageSize}&ip=${form.ip}`,
     headers: {
       token: getToken(),
     },
